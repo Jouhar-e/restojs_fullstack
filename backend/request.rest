@@ -1,0 +1,111 @@
+# test kategori
+GET http://localhost:5000/kategori
+
+###
+GET http://localhost:5000/kategori/one
+
+###
+GET http://localhost:5000/carikategori/u
+
+###
+POST http://localhost:5000/kategori
+Content-Type: application/json
+
+{
+    "kategori": "Makanan"
+}
+
+###
+PATCH http://localhost:5000/kategori/3
+Content-Type: application/json
+
+{
+    "kategori": "Buah"
+}
+
+###
+DELETE http://localhost:5000/menu/4
+
+# test menu
+##############################################################################################
+GET http://localhost:5000/menu
+
+###
+GET http://localhost:5000/menu/1
+
+###
+GET http://localhost:5000/carimenu/y
+
+###
+POST http://localhost:5000/menu
+Content-Type: application/json
+
+{
+    "idkategori": "1",
+    "menu": "Soto Ayam",
+    "gambar": "sotoayam.jpg",
+    "deskripsi": "Enak dan Murah",
+    "harga": "10000"
+}
+
+###
+PATCH http://localhost:5000/menu/4
+Content-Type: application/json
+
+{
+    "idkategori": "3",
+    "menu": "Jeruk",
+    "gambar": "jeruk.jpg",
+    "deskripsi": "Segar dan Murah",
+    "harga": "15000"
+}
+
+###
+DELETE http://localhost:5000/menu/5
+
+# test pelanggan
+##############################################################################################
+GET http://localhost:5000/pelanggan
+
+###
+GET http://localhost:5000/pelanggan/1
+
+###
+GET http://localhost:5000/caripelanggan/r
+
+###
+POST http://localhost:5000/pelanggan
+Content-Type: application/json
+
+{
+    "pelanggan": "Roni",
+    "jeniskelamin": "L",
+    "alamat": "Surabaya",
+    "telp": "088934216754",
+    "email": "roni@gmail.com",
+    "password": "123"
+}
+
+###
+PATCH http://localhost:5000/pelanggan/3
+Content-Type: application/json
+
+{
+    "pelanggan": "Rino",
+    "jeniskelamin": "P",
+    "alamat": "Surabaya",
+    "telp": "088934216754",
+    "email": "Rino@gmail.com",
+    "password": "123"
+}
+
+###
+PATCH http://localhost:5000/pelangganstatus/1
+Content-Type: application/json
+
+{
+    "status": "1"
+}
+
+###
+DELETE http://localhost:5000/pelanggan/4
