@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Button, ListGroup, Table, Form } from 'react-bootstrap'
+import { Col, Button, Table, Form } from 'react-bootstrap'
 import axios from 'axios'
+import Sidebar1 from './sidebarMenu/sidebar1'
 
 export const UserShow = () => {
 
@@ -71,37 +72,47 @@ export const UserShow = () => {
     }
 
     return (
-        <div>
-            <Table>
-                <thead className='text-center'>
-                    <tr>
-                        <th>No</th>
-                        <th>User</th>
-                        <th>Alamat</th>
-                        <th>Email</th>
-                        <th>Level</th>
-                        <th>Aksi</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((d, i) => (
-                        <tr key={d.iduser}>
-                            <td className='text-center'>{i + 1}</td>
-                            <td>{d.user}</td>
-                            <td>{d.alamat}</td>
-                            <td>{d.email}</td>
-                            <td>{d.level}</td>
-                            <td className='text-center'>
-                                <Button variant='danger' onClick={() => deleteData(d.iduser, d.user)} size='sm' className='m-1'>Hapus</Button>
-                            </td>
-                            <td className='text-center'>
-                                <Button variant='warning' onClick={() => setStatusId(d.iduser, d.user, d.status)} size='sm' className='m-1'>{d.status === 0 ? 'Nonaktif' : 'Aktif'}</Button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
+        <div className='container mt-3'>
+            <div className='row'>
+                <div className='col-md-2'>
+                    <Sidebar1 />
+                </div>
+                <div className='col'>
+                    <Col lg={3}>
+                        <Form.Control onChange={(name) => getDataByName(name.target.value)} type="text" placeholder='Cari' />
+                    </Col>
+                    <Table className='mt-2'>
+                        <thead className='text-center'>
+                            <tr>
+                                <th>No</th>
+                                <th>User</th>
+                                <th>Alamat</th>
+                                <th>Email</th>
+                                <th>Level</th>
+                                <th>Aksi</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((d, i) => (
+                                <tr key={d.iduser}>
+                                    <td className='text-center'>{i + 1}</td>
+                                    <td>{d.user}</td>
+                                    <td>{d.alamat}</td>
+                                    <td>{d.email}</td>
+                                    <td>{d.level}</td>
+                                    <td className='text-center'>
+                                        <Button variant='danger' onClick={() => deleteData(d.iduser, d.user)} size='sm' className='m-1'>Hapus</Button>
+                                    </td>
+                                    <td className='text-center'>
+                                        <Button variant='warning' onClick={() => setStatusId(d.iduser, d.user, d.status)} size='sm' className='m-1'>{d.status === 0 ? 'Nonaktif' : 'Aktif'}</Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
         </div>
     )
 

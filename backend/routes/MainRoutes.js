@@ -8,8 +8,20 @@ import { createUser, deleteUser, getUser, getUserById, getUserByName, getUserLog
 
 const routes = express.Router()
 
+const levelPetugas = (req, res, next) => {
+    if (req.query.level == "Admin") {
+        next()
+    }else if (req.query.level == "Koki") {
+        next()
+    }else if (req.query.level == "Kasir") {
+        next()
+    }else{
+        res.send("Dilarang!")
+    }
+}
+
 // route kategori
-routes.get('/kategori',getKategori)
+routes.get('/kategori', levelPetugas, getKategori)
 routes.get('/kategori/one',getKategoriByOne)
 routes.get('/kategori/:id',getKategoriById)
 routes.get('/carikategori/:name',getKategoriByName)

@@ -13,7 +13,7 @@ export const MainSide = () => {
 
     const getKategori = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/kategori')
+            const response = await axios.get('http://localhost:5000/kategori?level=Admin')
 
             setKategori(response.data)
         } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -26,6 +26,8 @@ export const EditMenu = () => {
             console.log(error)
         }
     }
+
+    console.log({id})
 
     const editData = async (e) => {
         e.preventDefault();
@@ -71,8 +73,8 @@ export const EditMenu = () => {
                 <Form.Group>
                     <Form.Label>Kategori</Form.Label>
                     <Form.Select value={idkategori} onChange={(e) => setIdKategori(e.target.value)} id="">
-                        {data.map((d) => (
-                            <option value={d.idkategori}>{d.kategori}</option>
+                        {data.map((d,i) => (
+                            <option key={i} value={d.idkategori}>{d.kategori}</option>
                         ))}
                     </Form.Select>
                 </Form.Group>
